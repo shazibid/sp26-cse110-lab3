@@ -1,18 +1,40 @@
-# Meeting 1: Alignment on Project Plan
+# Standup Notes Template
 
 ### Date & Time
-04/23/2026 17:00
 
 ### Participants
-Shazi Bidarian, Jared Ziv
+-
+-
 
-### Meeting Type
-Weekly check in
+### Absent
+-
 
-----
-### Agenda
-- [ ] Review team 13 project plan
-- [ ] Breakdown timeline
-- [ ] Assign responsibilities
-- [ ] Discuss best practices and approaches
-----
+---
+
+## Team Member Updates
+
+### <Name>
+- **Yesterday:**
+- **Today:**
+- **Blockers:**
+
+### <Name>
+- **Yesterday:**
+- **Today:**
+- **Blockers:**
+
+### <Name>
+- **Yesterday:**
+- **Today:**
+- **Blockers:**
+
+---
+
+## Announcements / Discussion
+-
+
+## Action Items
+- [ ] <task> — @<owner> — due <date>
+- [ ] <task> — @<owner> — due <date>
+
+## Next Standup
