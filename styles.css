@@ -1,0 +1,257 @@
+/* styles.css - Lab 3 */
+
+/* ---------- Colors + CSS Variables ---------- */
+:root {
+    --brand:       #e11313;                             /* hex */
+    --brand-soft:  rgb(246, 169, 25);                   /* rgb() */
+    --overlay:     rgba(99, 99, 99, 0.209);             /* rgba() */
+    --accent:      hsl(219, 27%, 29%);                  /* hsl() */
+    --accent-soft: hsla(48, 35%, 54%, 0.111);           /* hsla() */
+    --named:       orange;                              /* color name */
+    --wide:        color(display-p3 1 0.2 0.6);         /* wide-gamut color() */
+    --mix:         color-mix(in oklch, var(--brand) 75%, white);  /* color-mix() */
+
+    --radius: 8px;
+    --pad:    1rem;
+}
+
+/* ---------- Universal selector ---------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* ---------- Element selector + CSS variable w/ fallback + Google Font + background-color ---------- */
+body {
+    color: var(--text, #222);               /* variable with fallback */
+    background-color: var(--bg, #fafafa);   /* background-color */
+    font-family: "Inter", system-ui, sans-serif;  /* Google Font */
+    font-size: 16px;                        /* absolute unit: px */
+    line-height: 1.6;
+}
+
+/* ---------- Text properties (color, text-decoration, text-align) + relative unit rem ---------- */
+h1 {
+    font-size: 2rem;                        /* relative unit: rem */
+    text-align: center;                     /* text-align */
+    color: var(--brand);                    /* text color */
+    text-decoration: underline wavy var(--accent);  /* text-decoration */
+}
+
+/* ---------- Selector list ---------- */
+h1, h2, h3 {
+    font-family: "Merriweather", serif;
+    margin-bottom: 0.5em;                   /* relative unit: em */
+}
+
+/* ---------- Class selector + padding shorthand + border-radius ---------- */
+.card {
+    padding: 1rem 1.5rem;                   /* padding shorthand */
+    background-color: var(--accent-soft);
+    border-radius: var(--radius);           /* border-radius */
+}
+
+/* ---------- Combining two selectors (element.class) + border-style/color/width ---------- */
+div.card {
+    border-style: solid;                    /* border-style */
+    border-width: 2px;                      /* border-width */
+    border-color: var(--brand);             /* border-color */
+}
+
+/* ---------- ID selector + margin/padding longhand + auto margin + max/min-width ---------- */
+#recap {
+    padding-top:    1rem;                   /* padding longhand */
+    padding-right:  2rem;
+    padding-bottom: 1rem;
+    padding-left:   2rem;
+
+    margin-top:    1rem;                    /* margin longhand */
+    margin-bottom: 1rem;
+    margin-left:   auto;                    /* margin: auto */
+    margin-right:  auto;
+
+    max-width: 900px;                       /* max-width */
+    min-width: 280px;                       /* min-width */
+}
+
+#current { padding: 1em 2em; }
+#voting  { margin: 2rem auto; max-width: 800px; }    /* margin shorthand */
+
+/* ---------- Attribute selectors ---------- */
+input[type="radio"]    { margin-right: 0.5em; accent-color: var(--brand); }
+input[type="checkbox"] { margin-right: 0.5em; accent-color: var(--brand); }
+input[type="text"]     { padding: 0.3em 0.5em; border: 1px solid var(--accent); border-radius: 4px; }
+a[href^="#"]           { font-weight: 700; }
+
+/* ---------- Descendant combinator (space) + display: inline-block ---------- */
+nav a {
+    text-decoration: none;
+    color: var(--brand);
+    padding: 0.25em 0.75em;
+    display: inline-block;                  /* display: inline-block */
+    border-radius: var(--radius);
+}
+
+/* ---------- Child combinator (>) + relative unit ch ---------- */
+main > section {
+    padding: 2rem 3ch;                      /* relative unit: ch */
+}
+
+/* ---------- Adjacent sibling combinator (+) ---------- */
+label + input {
+    margin-left: 0.5em;
+}
+
+/* ---------- General sibling combinator (~) ---------- */
+h2 ~ p {
+    color: var(--accent);
+}
+
+/* ---------- Pseudo-class :hover ---------- */
+a:hover {
+    background-color: var(--mix);
+    text-decoration: underline;
+}
+
+/* ---------- Pseudo-class :active + absolute unit pt ---------- */
+button:active {
+    transform: translateY(1pt);             /* absolute unit: pt */
+}
+
+/* ---------- :has() selector (2023) ---------- */
+section:has(form) {
+    background-color: var(--overlay);
+    border: 1px solid var(--named);
+    padding: 1em;
+    border-radius: var(--radius);
+}
+
+/* ---------- Nested selectors (2023) ---------- */
+form {
+    padding: var(--pad);
+
+    & fieldset {
+        border: 2pt dashed var(--accent);   /* absolute unit: pt */
+        padding: 1em;
+        margin-bottom: 1em;
+        border-radius: var(--radius);
+    }
+
+    & legend {
+        padding: 0 0.5em;
+        color: var(--accent);
+        font-weight: 700;
+    }
+
+    & button {
+        background-color: var(--brand);
+        color: white;
+        border: none;
+        padding: 0.5em 1.25em;
+        border-radius: var(--radius);
+        cursor: pointer;
+        font-family: inherit;
+
+        &:hover  { background-color: var(--mix); color: var(--brand); }
+        &:active { transform: scale(0.98); }
+    }
+}
+
+/* ---------- Flexbox (5 children, 4 flex attrs) + position: sticky ---------- */
+nav {
+    display: flex;                          /* display: flex */
+    justify-content: center;                /* flex attr 1 */
+    align-items: center;                    /* flex attr 2 */
+    gap: 1rem;                              /* flex attr 3 */
+    flex-wrap: wrap;                        /* flex attr 4 */
+
+    position: sticky;                       /* position: sticky */
+    top: 0;
+    background-color: #fff;
+    padding: 0.75em;
+    z-index: 10;
+    border-bottom: 2px solid var(--accent);
+}
+
+/* ---------- Grid (4 children, 4 grid attrs) ---------- */
+#attendance ul {
+    display: grid;                          /* display: grid */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));  /* grid attr 1 */
+    gap: 1rem;                                                    /* grid attr 2 */
+    place-items: center;                                          /* grid attr 3 */
+    grid-auto-flow: row;                                          /* grid attr 4 */
+
+    list-style: none;
+    padding: 0;
+}
+
+/* ---------- Sizing: width (%), height + display: block ---------- */
+#attendance li {
+    padding: 1em 2em;
+    border: 1px solid var(--brand);
+    border-radius: var(--radius);
+    background-color: var(--accent-soft);
+    width: 100%;                            /* width (relative unit %) */
+    height: 60px;                           /* height */
+    display: block;                         /* display: block */
+    text-align: center;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* ---------- position: relative ---------- */
+header {
+    position: relative;
+    padding: 1rem;
+    background-color: var(--accent-soft);
+    border-bottom: 3px solid var(--brand);
+}
+
+/* ---------- display: none ---------- */
+form br { display: none; }
+
+/* ---------- display: inline ---------- */
+em      { display: inline; color: var(--brand); }
+
+#media img,
+#media video {
+    width: 80%;
+    max-width: 600px;
+    min-width: 200px;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+    border-radius: var(--radius);
+}
+
+#media audio {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+    margin: 1rem auto;
+}
+
+/* ---------- Absolute units (cm, in) + relative unit vh ---------- */
+footer {
+    position: relative;
+    text-align: center;
+    padding: 1cm 0;                         /* absolute unit: cm */
+    margin-top: 2vh;                        /* relative unit: vh */
+    background-color: var(--accent);
+    color: white;
+    letter-spacing: 0.1in;                  /* absolute unit: in */
+}
+
+/* ---------- Media query (width-based) ---------- */
+@media (max-width: 640px) {
+    nav {
+        flex-direction: column;
+        gap: 0.5em;
+    }
+    #attendance ul {
+        grid-template-columns: 1fr;
+    }
+    h1 { font-size: 1.5rem; }
+    main > section { padding: 1rem; }
+    #media img,
+    #media video { width: 95%; }
+}
