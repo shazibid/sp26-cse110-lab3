@@ -1,10 +1,23 @@
 ---
 name: Custom issue template
-about: Describe this issue template's purpose here.
-title: ''
-labels: ''
-assignees: ''
+about: A template to build issues off of
+title: 'Issue #: Title'
+labels: enhancement
+assignees: shazibid
 
 ---
 
+## Description
 
+## Tasks
+- [ ] 
+- [ ] 
+- [ ] 
+
+## Acceptance Criteria
+- 
+- 
+
+## Related Files / Resources
+
+## Notes
